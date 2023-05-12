@@ -1,0 +1,27 @@
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
+
+.button {
+    min-width: 12.8rem;
+    background-color: $yellow;
+    color: $brown;
+    padding: 1.28rem 1.92rem;
+    font-size: 1.6rem;
+    font-family: $type-first;
+    border: none;
+    border-radius: .64rem;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+
+    &:hover,
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 .3rem $yellow-light, 0 0 0 .4rem $yellow;
+    }
+
+    &:disabled {
+        opacity: .5;
+        cursor: wait;
+        box-shadow: none;
+    }
+}

@@ -1,0 +1,90 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth !important;
+}
+
+html {
+    font-size: 58%;
+    overflow-x: hidden;
+
+    @include device-up(md) {
+        font-size: 60%;
+    }
+
+    @include device-up(lg) {
+        font-size: 62.5%;
+    }
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: $type-first;
+    padding: 6.4rem 0 0;
+    color: $black;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0;
+}
+
+ul,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input {
+    display: block;
+    font-size: 1.6rem;
+    font-family: $type-first;
+    color: $black;
+}
+
+// CONTAINER
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @include device-up(lg) {
+        padding: 0;
+    }
+
+    @media (min-width: $breakpoint-sm) {
+        max-width: 540px;
+    }
+
+    @media (min-width: $breakpoint-md) {
+        max-width: 720px;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+        max-width: 960px;
+    }
+
+    @media (min-width: $breakpoint-xl) {
+        max-width: 1170px;
+    }
+}
