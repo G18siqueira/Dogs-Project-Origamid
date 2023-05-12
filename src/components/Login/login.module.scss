@@ -1,0 +1,30 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.login {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 100vh;
+    gap: 3.2rem;
+
+    @include device-up(md) {
+        grid-template-columns: 1fr 1fr;
+
+        &::before {
+            content: '';
+            display: block;
+            background: url('../../assets/login.jpg') no-repeat center center;
+            background-size: cover;
+        }
+    }
+
+
+    &-forms {
+        max-width: 100%;
+        padding: 2rem;
+        
+        @include device-up(md) {
+            max-width: 48rem;
+        }
+    }
+}

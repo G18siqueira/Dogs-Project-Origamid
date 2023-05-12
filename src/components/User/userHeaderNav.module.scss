@@ -1,0 +1,47 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.userNav {
+    display: grid;
+
+    @include device-up(md) {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.6rem;
+    }
+
+    a,
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 4rem;
+        height: 4rem;
+        background-color: $white2;
+        border: .1rem solid transparent;
+        border-radius: .32rem;
+        transition: all .2s ease-in-out;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+            background-color: $white;
+            box-shadow: 0 0 0 .3rem $white2;
+            border-color: $black;
+            outline: none;
+        }
+
+        svg {
+            font-size: 2.4rem;
+        }
+
+        &:global(.active) {
+            background-color: $white;
+            box-shadow: 0 0 0 .3rem $yellow-light;
+            border-color: $yellow;
+
+            svg {
+                color: $yellow;
+            }
+        }
+    }
+}

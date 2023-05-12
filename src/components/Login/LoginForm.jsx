@@ -1,58 +1,34 @@
+import { useContext } from 'react';
+import { UserContext } from '../../UserContext';
 import { Link } from 'react-router-dom';
-import styles from './login.module.scss';
-import { useEffect, useState } from 'react';
+
 import Input from '../Forms/Input/Input';
 import Button from '../Forms/Button/Button';
 import useForm from '../../hooks/useForm';
-import { TOKEN_POST, USER_GET } from '../../api';
+import Error from '../Ui/Error/Error';
+
+import styles from './loginForm.module.scss';
+import stylesBtn from '../Forms/Button/button.module.scss';
+
 const LoginForm = () => {
 	const username = useForm();
 	const password = useForm();
 
-	useEffect(() => {
-		const token = window.localStorage.getItem('token');
-		if (token) {
-			getUser(token);
-		}
-		getUser();
-	}, []);
-
-	const getUser = async (token) => {
-		const { url, options } = USER_GET(token);
-		try {
-			const response = await fetch(url, options);
-			const json = await response.json();
-			console.log(json);
-		} catch (error) {
-			console.log(error);
-		}
-	};
+	const { userLogin, error, loading } = useContext(UserContext);
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
 		if (username.validate() && password.validate()) {
-			const { url, options } = TOKEN_POST({
-				username: username.value,
-				password: password.value,
-			});
-			try {
-				const response = await fetch(url, options);
-				const json = await response.json();
-				console.log(json);
-				window.localStorage.setItem('token', json.token);
-				getUser(json.token);
-			} catch (error) {
-				console.log(error);
-			}
+			userLogin(username.value, password.value);
 		}
 	};
 
 	return (
-		<section>
-			<h1>Login</h1>
+		<section className={`${styles['loginForm']} animeLeft`}>
+			<h1 className={`title`}>Login</h1>
 
-			<form action="" onSubmit={handleSubmit}>
+			<form className={styles['loginForm-form']} onSubmit={handleSubmit}>
 				<Input
 					label={'Usuario'}
 					type={'text'}
@@ -65,9 +41,29 @@ const LoginForm = () => {
 					name={'password'}
 					{...password}
 				/>
-				<Button>Entrar</Button>
+				{loading ? (
+					<Button disabled>Carregando...</Button>
+				) : (
+					<Button>Entrar</Button>
+				)}
+				<Error error={error} />
 			</form>
-			<Link to={'/login/criar'}>Cadastro</Link>
+			<Link
+				className={styles['loginForm-btnPerdeu']}
+				to={'/login/perdeu'}
+			>
+				Perdeu a Senha?
+			</Link>
+			<div className={styles['loginForm-cadastro']}>
+				<h2>Cadastre-se</h2>
+				<p>Ainda não possui conta? Cadastre-se no site.</p>
+				<Link
+					className={stylesBtn['button']}
+					to={'/login/criar'}
+				>
+					Cadastro
+				</Link>
+			</div>
 		</section>
 	);
 };
