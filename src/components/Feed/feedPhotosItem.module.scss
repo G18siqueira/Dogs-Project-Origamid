@@ -1,0 +1,41 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.feedPhotosItem {
+    display: grid;
+    border: .32rem;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:nth-child(2) {
+        @include device-up(md) {
+            grid-column: 2 / 4;
+            grid-row: span 2;
+        }
+    }
+
+    &:hover {
+        .feedPhotosItem-visualizacao {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    img {
+        grid-area: 1/1;
+    }
+
+    &-visualizacao {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-area: 1/1;
+        background-color: rgba($black, .3);
+        color: $white;
+        font-size: 1.6rem;
+        text-align: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .2s ease-in-out;
+    }
+}

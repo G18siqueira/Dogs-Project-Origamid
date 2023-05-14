@@ -44,4 +44,98 @@
             }
         }
     }
+
+    &-navMobile {
+        display: block;
+        position: absolute;
+        top: 7rem;
+        right: 0;
+        padding: 0 1.6rem;
+        background-color: $white;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+        border-radius: .32rem;
+        transform: translateX(-1rem);
+        opacity: 0;
+        pointer-events: none;
+
+        &_active {
+            transition: all .3s ease-in-out;
+            transform: initial;
+            opacity: 1;
+            pointer-events: initial;
+            z-index: 10;
+        }
+
+        a,
+        button {
+            display: flex;
+            align-items: center;
+            background: none;
+            width: 100%;
+            border: none;
+            border-bottom: .1rem solid $white2;
+            padding: .8rem;
+            cursor: pointer;
+
+            &:hover {
+                svg {
+                    fill: $yellow;
+                }
+            }
+
+            svg {
+                margin: 0 .8rem 0 0;
+            }
+        }
+
+        button {
+            border-bottom: none;
+        }
+
+
+    }
+
+    &-mobileButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 4rem;
+        height: 4rem;
+        padding: 0;
+        background-color: $white2;
+        border: .1rem solid transparent;
+        border-radius: .32rem;
+        transition: all .2s ease-in-out;
+        cursor: pointer;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 1.92rem;
+            height: 2px;
+            border-radius: 2px;
+            background-color: currentColor;
+            box-shadow: 0 6px currentColor, 0 -6px currentColor;
+            transition: all .2s ease-in-out;
+        }
+
+        &:focus,
+        &:hover,
+        &_active {
+            outline: none;
+            background-color: $white;
+            box-shadow: 0 0 0 3px $yellow-light;
+            border-color: $yellow;
+            color: $yellow;
+        }
+
+        &_active {
+            &::after {
+                transform: rotate(-90deg);
+                width: 4px;
+                height: 4px;
+                box-shadow: 0 8px currentColor, 0 -8px currentColor;
+            }
+        }
+    }
 }
