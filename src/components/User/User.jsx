@@ -4,17 +4,20 @@ import styles from './user.module.scss';
 import Feed from '../Feed/Feed';
 import UserPhotoPost from './UserPhotoPost';
 import UserStats from './UserStats';
+import { useContext } from 'react';
+import { UserContext } from '../../UserContext';
+import NotFound from '../Layout/NotFound/NotFound';
 const User = () => {
+	const { data } = useContext(UserContext);
 	return (
 		<section className={`${styles['user']}`}>
-			<div className={`container`}>
-				<UserHeader />
-				<Routes>
-					<Route path="/" element={<Feed />} />
-					<Route path="postar" element={<UserPhotoPost />} />
-					<Route path="estastisticas" element={<UserStats />} />
-				</Routes>
-			</div>
+			<UserHeader />
+			<Routes>
+				<Route path="/" element={<Feed user={data.id} />} />
+				<Route path="postar" element={<UserPhotoPost />} />
+				<Route path="estastisticas" element={<UserStats />} />
+				<Route path="*" element={<NotFound />} />
+			</Routes>
 		</section>
 	);
 };

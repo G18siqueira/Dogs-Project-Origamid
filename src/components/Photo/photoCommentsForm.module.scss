@@ -1,0 +1,57 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.photoCommentsForm {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: stretch;
+    padding: 0 3.2rem 3.2rem;
+
+    &-textarea {
+        display: block;
+        width: 100%;
+        background-color: $white2;
+        padding: .8rem;
+        border: .1rem solid $white2;
+        font-size: 1.6rem;
+        font-family: $type-first;
+        resize: none;
+        transition: all .2s ease-in-out;
+
+        &:focus,
+        &:hover {
+            outline: none;
+            background-color: $white;
+            border-color: $yellow;
+            box-shadow: 0 0 0 3px $yellow-light;
+        }
+    }
+
+    &-button {
+        border: none;
+        cursor: pointer;
+        color: $black;
+        background-color: transparent;
+        font-size: 3rem;
+        padding: 0 1rem;
+        overflow: hidden;
+
+        svg {
+            transition: all .2s ease-in-out;
+
+            &:focus,
+            &:hover {
+                fill: $yellow-light;
+                stroke-width: 3rem;
+                stroke: $yellow;
+                transform: rotate(-20deg);
+                outline: none;
+            }
+
+        }
+    }
+}
+
+.photoCommentsFormSingle {
+    padding: 1.6rem 0 0;
+}

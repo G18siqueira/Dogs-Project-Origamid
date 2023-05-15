@@ -1,0 +1,108 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.photoContent {
+    display: grid;
+    grid-template-columns: minmax(32rem, 64rem);
+    grid-template-rows: auto 1fr auto;
+    margin: auto;
+    height: auto;
+    max-width: calc((100vh - 6.4rem));
+    overflow-y: auto;
+    border-radius: .36rem;
+    background-color: $white;
+    opacity: 0;
+    transform: scale(.8);
+    animation: scaleUp .3s forwards;
+
+    @keyframes scaleUp {
+        to {
+            opacity: initial;
+            transform: initial;
+        }
+    }
+
+    @include device-up(md) {
+        grid-template-columns: 57.6rem 32rem;
+        height: 57.6rem;
+        max-width: auto;
+        overflow: hidden;
+    }
+
+    .img {
+        grid-row: 1;
+
+        @include device-up(md) {
+            grid-row: 1/4;
+        }
+
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .details {
+        padding: 3.2rem 3.2rem 0 3.2rem;
+
+        .infos {
+            &-author {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                opacity: .5;
+                margin: 0 0 1.6rem;
+
+            }
+
+            &-link {
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            &-visualizations {
+                display: flex;
+                align-items: center;
+            }
+
+            &-attributes {
+                display: flex;
+                font-size: 1.8rem;
+                font-weight: bold;
+                margin: 1.6rem 0 3.2rem;
+
+                li {
+                    display: flex;
+                    align-items: center;
+                    margin: 0 3.2rem 0 0;
+
+                    &::before {
+                        content: '';
+                        display: inline-block;
+                        width: .2rem;
+                        height: 2.5rem;
+                        background-color: $black;
+                        margin: 0 .8rem 0 0;
+                        position: relative;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.photoContentSingle {
+    grid-template-columns: 1fr;
+    height: auto;
+
+    .details {
+        padding: 1.6rem 0 0;
+    }
+
+    .img {
+        grid-row: 1;
+        border-radius: .64rem;
+        overflow: hidden;
+    }
+}

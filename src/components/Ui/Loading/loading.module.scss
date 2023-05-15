@@ -1,0 +1,23 @@
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+
+    &-animation {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 8rem;
+        height: 8rem;
+        background-color: rgba($white, .5);
+        border-radius: 50%;
+        padding-left: 5px;
+    }
+}

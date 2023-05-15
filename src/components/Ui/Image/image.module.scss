@@ -1,0 +1,36 @@
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
+
+.image {
+    display: grid;
+
+    &-skeleton {
+        grid-area: 1/1;
+        height: 100%;
+        background-image: linear-gradient(90deg, $white2 0px, $white 50%, $white2 100%);
+        background-color: $white2;
+        background-size: 200%;
+        animation: skeleton 1.5s infinite linear;
+
+        @keyframes skeleton {
+            from {
+                background-position: 0px;
+            }
+
+            to {
+                background-position: -200%;
+            }
+        }
+    }
+
+
+    &-img {
+        display: block;
+        max-width: 100%;
+        height: 100%;
+        object-fit: cover;
+        grid-area: 1/1;
+        opacity: 0;
+        transition: all .2s ease-in-out;
+    }
+}

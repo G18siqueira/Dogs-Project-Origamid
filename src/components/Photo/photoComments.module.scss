@@ -1,0 +1,26 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.photoComments {
+    padding: 0 3.2rem 3.2rem;
+    overflow-y: auto;
+    word-break: break-word;
+    max-height: 20rem;
+
+    @include device-up(md) {
+        max-height: 100%;
+    }
+
+    li {
+        margin: 0 0 .8rem;
+
+        &:last-of-type {
+            margin: 0;
+        }
+    }
+}
+
+.photoCommentsSingle {
+    padding: 0;
+    max-height: 40rem;
+}

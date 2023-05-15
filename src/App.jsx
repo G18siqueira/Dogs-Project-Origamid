@@ -11,6 +11,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { UserStorage } from './UserContext';
 import User from './components/User/User';
 import ProtectedRouter from './components/Ui/ProtectedRouter/ProtectedRouter';
+import Photo from './components/Photo/Photo';
+import UserProfile from './components/User/UserProfile';
+import NotFound from './components/Layout/NotFound/NotFound';
 
 const App = () => {
 	useEffect(() => {
@@ -33,6 +36,9 @@ const App = () => {
 								</ProtectedRouter>
 							}
 						/>
+						<Route path="foto/:id" element={<Photo />} />
+						<Route path="perfil/:user" element={<UserProfile />} />
+						<Route path="*" element={<NotFound />} />
 					</Routes>
 					<Footer />
 				</UserStorage>

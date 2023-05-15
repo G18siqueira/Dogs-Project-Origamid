@@ -1,0 +1,22 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.photoDelete {
+    background-color: $gray;
+    padding: .48rem .96rem;
+    font-size: 1.4rem;
+    font-family: $type-first;
+    line-height: 1;
+    border: .1rem solid transparent;
+    border-radius: .64rem;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+
+    &:focus,
+    &:hover {
+        outline: none;
+        background-color: $white;
+        box-shadow: 0 0 0 .3rem $white2;
+        border-color: $black;
+    }
+}

@@ -1,0 +1,21 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.feedModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($black, .4);
+    padding: 3.2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    @include device-up(md) {
+        padding: 3.2rem 6.4rem;
+
+    }
+}
