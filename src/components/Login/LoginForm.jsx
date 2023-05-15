@@ -9,6 +9,7 @@ import Error from '../Ui/Error/Error';
 
 import styles from './loginForm.module.scss';
 import stylesBtn from '../Forms/Button/button.module.scss';
+import Head from '../Ui/Head/Head';
 
 const LoginForm = () => {
 	const username = useForm();
@@ -25,46 +26,49 @@ const LoginForm = () => {
 	};
 
 	return (
-		<section className={`${styles['loginForm']} animeLeft`}>
-			<h1 className={`title`}>Login</h1>
+		<>
+			<Head title="Login" description="" />
+			<section className={`${styles['loginForm']} animeLeft`}>
+				<h1 className={`title`}>Login</h1>
 
-			<form className={styles['loginForm-form']} onSubmit={handleSubmit}>
-				<Input
-					label={'Usuario'}
-					type={'text'}
-					name={'username'}
-					{...username}
-				/>
-				<Input
-					label={'Senha'}
-					type={'password'}
-					name={'password'}
-					{...password}
-				/>
-				{loading ? (
-					<Button disabled>Carregando...</Button>
-				) : (
-					<Button>Entrar</Button>
-				)}
-				<Error error={error} />
-			</form>
-			<Link
-				className={styles['loginForm-btnPerdeu']}
-				to={'/login/perdeu'}
-			>
-				Perdeu a Senha?
-			</Link>
-			<div className={styles['loginForm-cadastro']}>
-				<h2>Cadastre-se</h2>
-				<p>Ainda não possui conta? Cadastre-se no site.</p>
-				<Link
-					className={stylesBtn['button']}
-					to={'/login/criar'}
+				<form
+					className={styles['loginForm-form']}
+					onSubmit={handleSubmit}
 				>
-					Cadastro
+					<Input
+						label={'Usuario'}
+						type={'text'}
+						name={'username'}
+						{...username}
+					/>
+					<Input
+						label={'Senha'}
+						type={'password'}
+						name={'password'}
+						{...password}
+					/>
+					{loading ? (
+						<Button disabled>Carregando...</Button>
+					) : (
+						<Button>Entrar</Button>
+					)}
+					<Error error={error && 'Dados incorretos'} />
+				</form>
+				<Link
+					className={styles['loginForm-btnPerdeu']}
+					to={'/login/perdeu'}
+				>
+					Perdeu a Senha?
 				</Link>
-			</div>
-		</section>
+				<div className={styles['loginForm-cadastro']}>
+					<h2>Cadastre-se</h2>
+					<p>Ainda não possui conta? Cadastre-se no site.</p>
+					<Link className={stylesBtn['button']} to={'/login/criar'}>
+						Cadastro
+					</Link>
+				</div>
+			</section>
+		</>
 	);
 };
 

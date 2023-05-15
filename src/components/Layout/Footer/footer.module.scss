@@ -1,0 +1,16 @@
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16rem;
+    background-color: $yellow;
+    color: $brown;
+    text-align: center;
+
+    p {
+        margin: 1.6rem 0 0;
+    }
+}

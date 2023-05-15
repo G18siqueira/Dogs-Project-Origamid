@@ -9,6 +9,7 @@ import LoginPasswordReset from './LoginPasswordReset';
 
 import styles from './login.module.scss';
 import NotFound from '../Layout/NotFound/NotFound';
+import Head from '../Ui/Head/Head';
 
 const Login = () => {
 	const { login } = useContext(UserContext);
@@ -16,17 +17,23 @@ const Login = () => {
 	if (login === true) return <Navigate to="/conta" />;
 
 	return (
-		<section className={styles['login']}>
-			<div className={styles['login-forms']}>
-				<Routes>
-					<Route path="/" element={<LoginForm />} />
-					<Route path="criar" element={<LoginCreate />} />
-					<Route path="perdeu" element={<LoginPasswordLost />} />
-					<Route path="resetar" element={<LoginPasswordReset />} />
-					<Route path="*" element={<NotFound />} />
-				</Routes>
-			</div>
-		</section>
+		<>
+			<Head title="Login" description="" />
+			<section className={styles['login']}>
+				<div className={styles['login-forms']}>
+					<Routes>
+						<Route path="/" element={<LoginForm />} />
+						<Route path="criar" element={<LoginCreate />} />
+						<Route path="perdeu" element={<LoginPasswordLost />} />
+						<Route
+							path="resetar"
+							element={<LoginPasswordReset />}
+						/>
+						<Route path="*" element={<NotFound />} />
+					</Routes>
+				</div>
+			</section>
+		</>
 	);
 };
 

@@ -1,0 +1,35 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.graph {
+    &-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin: 0 0 4rem;
+
+        @include device-up(lg) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    &-total {
+        padding: 2rem;
+        font-size: 2rem;
+
+        @include device-up(lg) {
+            grid-column: 1/3;
+        }
+    }
+
+    &-item {
+        display: grid;
+        align-items: center;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
+        border-radius: .32rem;
+    }
+
+    &:global(.VictoryContainer) {
+        height: initial !important;
+    }
+}

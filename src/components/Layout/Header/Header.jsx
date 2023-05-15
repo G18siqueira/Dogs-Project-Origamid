@@ -8,7 +8,6 @@ import { UserContext } from '../../../UserContext';
 
 const Header = () => {
 	const { data, userLogout } = useContext(UserContext);
-	console.log(data);
 
 	return (
 		<header className={styles['header']}>
